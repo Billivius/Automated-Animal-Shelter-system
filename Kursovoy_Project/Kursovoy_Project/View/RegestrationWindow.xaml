@@ -1,0 +1,72 @@
+﻿<Window x:Class="Kursovoy_Project.View.RegestrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Kursovoy_Project.ViewModel"
+        mc:Ignorable="d"
+        Name="RegWindow"
+        Title="Регистрация" Height="550" Width="400" MinHeight="550" MinWidth="400">
+
+    <Window.DataContext>
+        <vm:SaveUser/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Century"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#FF7CCDFB"/>
+            <Setter Property="Background" Value="#FF232F3E"/>
+            <Setter Property="Margin" Value="0,5,0,5"/>
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="BorderBrush" Value="#FF091119"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Century"/>
+            <Setter Property="FontSize" Value="21"/>
+            <Setter Property="Foreground" Value="#FF7CCDFB"/>
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Century"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#FFF3F3F3"/>
+            <Setter Property="Background" Value="#FF1B3A4B"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="Content" Value="Войти"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF0A1525">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="1" >
+            <Rectangle Fill="White" Opacity="0.15" StrokeLineJoin="Round" StrokeEndLineCap="Round" Stroke="White" StrokeThickness="20" StrokeDashArray="2 0" />
+        </Grid>
+        <StackPanel Grid.Column="1" Grid.Row="1" >
+            <Label Content="Логин"/>
+            <TextBox Name="Login" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Пароль"/>
+            <TextBox Name="Password" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Имя"/>
+            <TextBox Name="Name" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Почта"/>
+            <TextBox Name="Mail" Text="{Binding Mail, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Телефон"/>
+            <TextBox Name="NumberPhone" Text="{Binding NumberPhone, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Command="{Binding RegestrationWindowCommand}" Content="Зарегестрироваться"/>
+        </StackPanel>
+    </Grid>
+</Window>

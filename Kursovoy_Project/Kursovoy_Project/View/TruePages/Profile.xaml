@@ -1,0 +1,269 @@
+﻿<Page x:Name="page" x:Class="Kursovoy_Project.View.TruePages.Profile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:Kursovoy_Project.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Profile">
+
+    <Page.DataContext>
+        <vm:Profile/>
+    </Page.DataContext>
+
+    <Page.Resources>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="Foreground" Value="#FF18222B"/>
+        </Style>
+        <Style TargetType="TabItem">
+            <Setter Property="Background" Value="#FF005F82"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <DockPanel>
+            <TabControl TabStripPlacement="Left" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" HorizontalContentAlignment="Stretch" Width="{Binding Width, ElementName=page}">
+                <TabItem>
+                    <TabItem.Header>
+                        <Label Content="Мои собаки"/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <ListBox ItemsSource="{Binding UserDogs}"
+                             
+                        Background="{x:Null}" BorderBrush="{x:Null}" HorizontalContentAlignment="Stretch">
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <UniformGrid Margin="25,30,25,0" Height="200" HorizontalAlignment="Stretch">
+                                        <UniformGrid.Resources>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="FontSize" Value="16"/>
+                                                <Setter Property="FontFamily" Value="Century"/>
+                                                <Setter Property="Margin" Value="10,0,10,0"/>
+                                                <Setter Property="Foreground" Value="AliceBlue"/>
+                                            </Style>
+                                        </UniformGrid.Resources>
+                                        <Grid Background="#FF333F49">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="150"/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="3*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Grid.ColumnSpan="2" Grid.RowSpan="3" Background="#FF1F2B36" Height="190" Width="190" Margin="5,0,0,0">
+                                                <Grid Height="130" Width="160" Margin="0,-40,0,0" Background="#FF111A23">
+                                                    <Image Name="Image" Source="{Binding PathImage}" MaxHeight="130" MaxWidth="160" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Stretch="Uniform" />
+                                                </Grid>
+                                                <Grid IsEnabled="False" Height="30" Width="30" Margin="160,-170,0,0">
+                                                </Grid>
+                                            </Grid>
+                                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Имя:" HorizontalAlignment="Right" />
+                                            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Name}"/>
+                                            <TextBlock Grid.Column="0" Grid.Row="2" Text="Порода:" HorizontalAlignment="Right"/>
+                                            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Species}"/>
+                                            <Grid Grid.Column="3" Grid.RowSpan="3" Width="400" VerticalAlignment="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Grid.Column="0">
+                                                    <Label Content="Имя"/>
+                                                    <TextBlock Text="{Binding Name}"/>
+                                                    <Label Content="Возраст"/>
+                                                    <TextBlock Text="{Binding Age}"/>
+                                                    <Label Content="Порода"/>
+                                                    <TextBlock Text="{Binding Species}"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1">
+                                                    <Label Content="Вес"/>
+                                                    <TextBlock Text="{Binding Weight}"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="2">
+
+                                                    <Label Content="Описание"/>
+                                                    <TextBox Grid.Column="2" Background="#FF43515D" SelectionBrush="{x:Null}" BorderBrush="#FF62829C"
+                                                     
+                                                     Text="{Binding Description}" TextWrapping="Wrap" ScrollViewer.CanContentScroll="True"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </UniformGrid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <Label Content="Информация"/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <Grid HorizontalAlignment="Center">
+                            <Grid.Resources>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                    <Setter Property="FontFamily" Value="Century"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                    <Setter Property="Foreground" Value="#FF7CCDFB"/>
+                                    <Setter Property="Background" Value="#FF232F3E"/>
+                                    <Setter Property="Margin" Value="0,5,0,5"/>
+                                    <Setter Property="Width" Value="180"/>
+                                    <Setter Property="BorderBrush" Value="#FF091119"/>
+                                </Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontFamily" Value="Century"/>
+                                    <Setter Property="FontSize" Value="21"/>
+                                    <Setter Property="Foreground" Value="#FF7CCDFB"/>
+                                    <Setter Property="Width" Value="180"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                </Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="FontFamily" Value="Century"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="Foreground" Value="#FFF3F3F3"/>
+                                    <Setter Property="Background" Value="#FF1B3A4B"/>
+                                    <Setter Property="Height" Value="20"/>
+                                    <Setter Property="Width" Value="180"/>
+                                    <Setter Property="Margin" Value="0,20,0,0"/>
+                                    <Setter Property="Content" Value="Войти"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Rectangle Height="420" Width="400" Fill="White" Opacity="0.15" StrokeLineJoin="Round" StrokeEndLineCap="Round" Stroke="White" StrokeThickness="20" StrokeDashArray="4 0"/>
+                            <StackPanel Grid.Column="1" Grid.Row="1" Margin="0,20,0,0" >
+                                <Label Content="Логин"/>
+                                <TextBox Name="Login" Text="{Binding CurrentUser.Login, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label Content="Имя"/>
+                                <TextBox Name="Name" Text="{Binding CurrentUser.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label Content="Почта"/>
+                                <TextBox Name="Mail" Text="{Binding CurrentUser.Mail, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Label Content="Телефон"/>
+                                <TextBox Name="NumberPhone" Text="{Binding CurrentUser.NumberPhone, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                        </Grid>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem Visibility="{Binding ItsClerk}">
+                    <TabItem.Header>
+                        <Label Content="Рабочие дни"/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <Grid Height="300" Width="300" Margin="200,0,0,0">
+                            <Grid.Resources>
+                                <Style TargetType="Rectangle">
+                                    <Setter Property="Fill" Value="White"/>
+                                    <Setter Property="Opacity" Value="0.15"/>
+                                    <Setter Property="StrokeThickness" Value="50"/>
+                                    <Setter Property="StrokeDashArray" Value="6 0"/>
+                                    <Setter Property="StrokeStartLineCap" Value="Round"/>
+                                    <Setter Property="StrokeLineJoin" Value="Round"/>
+                                    <Setter Property="Stroke" Value="White"/>
+                                </Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="{x:Null}"/>
+                                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="FontSize" Value="16"/>
+                                    <Setter Property="FontFamily" Value="Centery"/>
+                                    <Setter Property="Foreground" Value="#FF74CDE8"/>
+                                    <Setter Property="Height" Value="70"/>
+                                    <Setter Property="Width" Value="150"/>
+                                    <Setter Property="Padding" Value="0"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.ColumnSpan="2" Grid.RowSpan="4"/>
+                            <Rectangle Grid.Column="0" Grid.Row="1" Stroke="{Binding Button0}"/>
+                            <Rectangle Grid.Column="1" Grid.Row="1" Stroke="{Binding Button3}"/>
+                            <Rectangle Grid.Column="0" Grid.Row="2" Stroke="{Binding Button1}"/>
+                            <Rectangle Grid.Column="1" Grid.Row="2" Stroke="{Binding Button4}"/>
+                            <Rectangle Grid.Column="0" Grid.Row="3" Stroke="{Binding Button2}"/>
+                            <Rectangle Grid.Column="1" Grid.Row="3" Stroke="{Binding Button5}"/>
+
+                            <Button Content="Рабочие дни" Grid.ColumnSpan="2" Grid.Row="0" IsEnabled="False"/>
+
+                            <Button Name="Button0" Content="Понедельник" Grid.Column="0" Grid.Row="1" Command="{Binding SetDayCommand}" CommandParameter="{Binding Name, ElementName=Button0}"/>
+                            <Button Name="Button1" Content="Вторник" Grid.Column="0" Grid.Row="2" Command="{Binding SetDayCommand}" CommandParameter="{Binding Name, ElementName=Button1}"/>
+                            <Button Name="Button2" Content="Среда" Grid.Column="0" Grid.Row="3" Command="{Binding SetDayCommand}" CommandParameter="{Binding Name, ElementName=Button2}"/>
+                            <Button Name="Button3" Content="Четверг" Grid.Column="1" Grid.Row="1" Command="{Binding SetDayCommand}" CommandParameter="{Binding Name, ElementName=Button3}"/>
+                            <Button Name="Button4" Content="Пятница" Grid.Column="1" Grid.Row="2" Command="{Binding SetDayCommand}" CommandParameter="{Binding Name, ElementName=Button4}"/>
+                            <Button Name="Button5" Content="Суббота" Grid.Column="1" Grid.Row="3" Command="{Binding SetDayCommand}" CommandParameter="{Binding Name, ElementName=Button5}"/>
+
+                        </Grid>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem Visibility="{Binding ItsClerk}">
+                    <TabItem.Header>
+                        <Label Content="Ред. собак"/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <DockPanel>
+                            <DockPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="FontFamily" Value="Century"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="Foreground" Value="#FFF3F3F3"/>
+                                    <Setter Property="Background" Value="#FF1B3A4B"/>
+                                    <Setter Property="Margin" Value="0,20,0,0"/>
+                                    <Setter Property="Content" Value="Войти"/>
+                                </Style>
+                            </DockPanel.Resources>
+                            <Grid DockPanel.Dock="Bottom" Height="50" >
+                                <Button Content="Удалить" Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedItem, ElementName=dataGrid}"/>
+                            </Grid>
+                            <DataGrid x:Name="dataGrid" ItemsSource="{Binding Dogs}" Background="{x:Null}" BorderBrush="{x:Null}" VerticalGridLinesBrush="Black" RowBackground="#FF0C3B5B" HorizontalGridLinesBrush="Black" FontFamily="Century" Foreground="#FF50707A" SelectionMode="Single" HorizontalContentAlignment="Stretch" />
+                        </DockPanel>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem Visibility="{Binding ItsAdmin}">
+                    <TabItem.Header>
+                        <Label Content="Ред. пользов."/>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <DockPanel>
+                            <DockPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="FontFamily" Value="Century"/>
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="Foreground" Value="#FFF3F3F3"/>
+                                    <Setter Property="Background" Value="#FF1B3A4B"/>
+                                    <Setter Property="Margin" Value="0,20,0,0"/>
+                                    <Setter Property="Content" Value="Войти"/>
+                                </Style>
+                            </DockPanel.Resources>
+                            <Grid DockPanel.Dock="Bottom" Height="50" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Button Content="Удалить" Command="{Binding DeleteUserCommand}" CommandParameter="{Binding SelectedItem, ElementName=dataGrid1}"/>
+                                <Button Grid.Column="1" Content="Сохранить" Command="{Binding SaveUserCommand}"/>
+                            </Grid>
+                            <DataGrid x:Name="dataGrid1" ItemsSource="{Binding Users}" Background="{x:Null}" BorderBrush="{x:Null}" VerticalGridLinesBrush="Black" RowBackground="#FF0C3B5B" HorizontalGridLinesBrush="Black" FontFamily="Century" Foreground="#FF50707A" SelectionMode="Single" HorizontalContentAlignment="Stretch" />
+                        </DockPanel>
+                    </TabItem.Content>
+                </TabItem>
+            </TabControl>
+            <Button Content="Сменить пользователя" DockPanel.Dock="Right" Background="#FF005F82" Height="40" Width="180" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="14" FontFamily="Arial Black" Foreground="#FF111B1F" Command="{Binding ChangedUser}"/>
+        </DockPanel>
+    </Grid>
+</Page>

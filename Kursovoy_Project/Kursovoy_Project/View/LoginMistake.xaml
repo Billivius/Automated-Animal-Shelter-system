@@ -1,0 +1,17 @@
+﻿<Window x:Class="Kursovoy_Project.View.LoginMistake"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Kursovoy_Project.ViewModel"
+        mc:Ignorable="d"
+        Name="Mistake"
+        Title="Mistake!" Height="80" Width="230" WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <vm:Mistake/>
+    </Window.DataContext>
+    <Grid Background="#FF0C2A3E">
+        <TextBlock Foreground="#FFDCE084" Text="{Binding Text}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Window>
